@@ -17,10 +17,9 @@ RUN \
   apt-get update && \
   apt-get install --no-install-recommends -y \
     ocl-icd-libopencl1 \
-    git \
-    python3-git \
     freecad \
     python3-pip \
+    python3-git \
     python3-xdg \
     python3-pyside2.qtwebengine \
     python3-pyside2.qtwebenginecore \
