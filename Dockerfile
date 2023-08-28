@@ -18,6 +18,7 @@ RUN \
   apt-get install --no-install-recommends -y \
     ocl-icd-libopencl1 \
     freecad \
+    python3-xdg \
     xz-utils && \
   ln -s libOpenCL.so.1 /usr/lib/x86_64-linux-gnu/libOpenCL.so && \
   echo "**** cleanup ****" && \
