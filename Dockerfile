@@ -19,7 +19,9 @@ RUN \
     ocl-icd-libopencl1 \
     freecad \
     python3-xdg \
-    python3-pyside2.qtwebengine* \
+    python3-pyside2.qtwebengine \
+    python3-pyside2.qtwebenginecore \
+    python3-pyside2.qtwebenginewidgets \
     python3-pyside2.qtwebchannel \
     xz-utils && \
   ln -s libOpenCL.so.1 /usr/lib/x86_64-linux-gnu/libOpenCL.so && \
