@@ -16,7 +16,7 @@ RUN \
   apt-get update && \
   apt-get install --no-install-recommends -y \
     ocl-icd-libopencl1 \
-    flatpak \
+    wget \
     libfuse2 \
     python3-pip \
     python3-git \
@@ -34,15 +34,14 @@ RUN \
     /var/lib/apt/lists/* \
     /var/tmp/*
 
-# Create a startup script
-RUN echo '#!/bin/bash\n \
-if ! flatpak list | grep -q "org.freecadweb.FreeCAD"; then\n \
-    flatpak install -y flathub org.freecadweb.FreeCAD\n \
-fi\n \
-flatpak run org.freecadweb.FreeCAD "$@"' > /usr/local/bin/freecad
+# Download the FreeCAD AppImage
+RUN wget -O FreeCAD.AppImage https://github.com/FreeCAD/FreeCAD/releases/download/0.21.0/FreeCAD_0.21.0-Linux-x86_64.AppImage
 
-# Make the script executable
-RUN chmod +x /usr/local/bin/freecad
+# Make the AppImage executable
+RUN chmod +x FreeCAD.AppImage
+
+# Add it to the default path
+RUN mv FreeCAD.AppImage /usr/local/bin/freecad
 
 # add local files
 COPY /root /
