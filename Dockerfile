@@ -16,7 +16,7 @@ RUN \
   apt-get update && \
   apt-get install --no-install-recommends -y \
     ocl-icd-libopencl1 \
-    wget \
+    flatpak \
     python3-pip \
     python3-git \
     python3-xdg \
@@ -25,6 +25,7 @@ RUN \
     python3-pyside2.qtwebenginewidgets \
     python3-pyside2.qtwebchannel \
     xz-utils && \
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   ln -s libOpenCL.so.1 /usr/lib/x86_64-linux-gnu/libOpenCL.so && \
   echo "**** cleanup ****" && \
   rm -rf \
@@ -32,14 +33,14 @@ RUN \
     /var/lib/apt/lists/* \
     /var/tmp/*
 
-# Download the FreeCAD AppImage
-RUN wget -O FreeCAD.AppImage https://github.com/FreeCAD/FreeCAD/releases/download/0.21.0/FreeCAD_0.21.0-Linux-x86_64.AppImage
+# Download the FreeCAD flatpak
+RUN flatpak install flathub org.freecadweb.FreeCAD -y
 
-# Make the AppImage executable
-RUN chmod +x FreeCAD.AppImage
+# Create a wrapper script for FreeCAD
+RUN echo '#!/bin/sh\nflatpak run org.freecadweb.FreeCAD "$@"' > /usr/local/bin/freecad
 
-# Add it to the default path
-RUN mv FreeCAD.AppImage /usr/local/bin/freecad
+# Make the wrapper script executable
+RUN chmod +x /usr/local/bin/freecad
 
 # add local files
 COPY /root /
