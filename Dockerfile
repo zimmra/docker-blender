@@ -44,7 +44,6 @@ RUN \
     libmedc-dev \
     libopencv-dev \
     libproj-dev \
-    libvtk6-dev \
     libx11-dev \
     libxerces-c-dev \
     libzipios++-dev \
