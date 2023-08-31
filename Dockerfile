@@ -27,7 +27,6 @@ RUN \
     python3-pyside2.qtwebchannel \
     xz-utils && \
   ln -s libOpenCL.so.1 /usr/lib/x86_64-linux-gnu/libOpenCL.so && \
-  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && \
   echo "**** cleanup ****" && \
   rm -rf \
     /tmp/* \
