@@ -17,6 +17,7 @@ RUN \
   apt-get install --no-install-recommends -y \
     ocl-icd-libopencl1 \
     flatpak \
+    libfuse2 \
     python3-pip \
     python3-git \
     python3-xdg \
