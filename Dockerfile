@@ -106,6 +106,10 @@ RUN mkdir freecad-build && \
     cmake ../freecad-source && \
     make -j$(nproc --ignore=2)
 
+
+# Create a symbolic link to invoke FreeCAD with 'freecad'
+RUN ln -s /freecad-build/bin/FreeCAD /usr/local/bin/freecad
+
 # add local files
 COPY /root /
 
