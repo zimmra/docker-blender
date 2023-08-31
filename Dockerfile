@@ -75,6 +75,7 @@ RUN \
     python3-pyside2.qtwebenginecore \
     python3-pyside2.qtwebenginewidgets \
     python3-pyside2.qtwebchannel \
+    python3-pyside2.qtuitools \
     libocct*-dev \
     libocct-data-exchange-dev \
     libocct-draw-dev \
