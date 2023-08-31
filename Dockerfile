@@ -47,6 +47,7 @@ RUN \
     libx11-dev \
     libxerces-c-dev \
     libzipios++-dev \
+    qtbase5-dev-tools \
     qtbase5-dev \
     qttools5-dev \
     qt5-default \
@@ -82,7 +83,7 @@ RUN \
     libocct-ocaf-dev \
     libocct-visualization-dev \
     occt-draw \
-    python3-pyside2uic \
+    pyside2-tools \ 
     git && \
   ln -s libOpenCL.so.1 /usr/lib/x86_64-linux-gnu/libOpenCL.so && \
   echo "**** cleanup ****" && \
