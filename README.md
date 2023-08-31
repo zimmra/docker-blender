@@ -39,3 +39,4 @@ services:
 ### To-Do
 - Cleanup vestigial Blender stuff that has carried over
 - Further test persistence - appears addons and settings survive container destruction/recreation but haven't done extensive testing
+- See if Full-Screen can be set by default upon launch
