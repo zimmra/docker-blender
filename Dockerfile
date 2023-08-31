@@ -102,11 +102,7 @@ RUN apt-get update && apt-get install -y libvtk7-dev
 RUN git clone https://github.com/FreeCAD/FreeCAD.git freecad-source
 
 # Create a build directory and compile FreeCAD
-RUN mkdir freecad-build && \
-    cd freecad-build && \
-    cmake ../freecad-source && \
-    make -j$(nproc --ignore=2)
-
+RUN mkdir freecad-build && cd freecad-build && cmake ../freecad-source && make -j$(nproc --ignore=2)
 
 # Create a symbolic link to invoke FreeCAD with 'freecad'
 RUN ln -s /freecad-build/bin/FreeCAD /usr/local/bin/freecad
