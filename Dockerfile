@@ -13,11 +13,10 @@ ENV TITLE=FreeCAD
 
 RUN \
   echo "**** install packages ****" && \
-  add-apt-repository ppa:freecad-maintainers/freecad-stable && \
   apt-get update && \
   apt-get install --no-install-recommends -y \
     ocl-icd-libopencl1 \
-    freecad \
+    wget \
     python3-pip \
     python3-git \
     python3-xdg \
@@ -32,6 +31,15 @@ RUN \
     /tmp/* \
     /var/lib/apt/lists/* \
     /var/tmp/*
+
+# Download the FreeCAD AppImage
+RUN wget -O FreeCAD.AppImage https://github.com/FreeCAD/FreeCAD/releases/download/0.21.0/FreeCAD_0.21.0-Linux-x86_64.AppImage
+
+# Make the AppImage executable
+RUN chmod +x FreeCAD.AppImage
+
+# Add it to the default path
+RUN mv FreeCAD.AppImage /usr/local/bin/freecad
 
 # add local files
 COPY /root /
