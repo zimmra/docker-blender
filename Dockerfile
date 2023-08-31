@@ -48,9 +48,10 @@ RUN \
     libxerces-c-dev \
     libzipios++-dev \
     qtbase5-dev-tools \
+    qtchooser \
     qtbase5-dev \
+    qt5-qmake \
     qttools5-dev \
-    qt5-default \
     libqt5opengl5-dev \
     libqt5svg5-dev \
     qtwebengine5-dev \
