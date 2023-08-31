@@ -62,6 +62,7 @@ RUN \
     pyside2-tools \
     pyqt5-dev-tools \
     python3-dev \
+    python3-pip \
     python3-matplotlib \
     python3-packaging \
     python3-pivy \
