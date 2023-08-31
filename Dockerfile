@@ -33,13 +33,14 @@ RUN \
     /var/lib/apt/lists/* \
     /var/tmp/*
 
-# Download the FreeCAD flatpak
-RUN flatpak install flathub org.freecadweb.FreeCAD -y
+# Create a startup script
+RUN echo '#!/bin/bash\n \
+if ! flatpak list | grep -q "org.freecadweb.FreeCAD"; then\n \
+    flatpak install -y flathub org.freecadweb.FreeCAD\n \
+fi\n \
+flatpak run org.freecadweb.FreeCAD "$@"' > /usr/local/bin/freecad
 
-# Create a wrapper script for FreeCAD
-RUN echo '#!/bin/sh\nflatpak run org.freecadweb.FreeCAD "$@"' > /usr/local/bin/freecad
-
-# Make the wrapper script executable
+# Make the script executable
 RUN chmod +x /usr/local/bin/freecad
 
 # add local files
